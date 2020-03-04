@@ -8,11 +8,13 @@ This morning the project manager received a frantic call from the EIC of _Flavor
 
 ## :running: Activities
 
-Follow along with the activities below to walk through the process of creating a hotfix branch, creating a feature branch for the changes, getting changes merged into the hotfix, then merging the hotfix into both the `master` and `develop` branches.
+Start by looking at the diagram from the GitFlow article and find the hotfix. 
+
+Follow along with the activities below to walk through the process of creating a hotfix branch, then merging the hotfix into both the `master` and `develop` branches.
 
 ### 1 - Create the Hotfix Branch
 
-__Maintainers__
+__One Team Member__
 
 Create a branch off of `master` named `hotfix-1.0.1`:
 ```sh
@@ -38,59 +40,6 @@ $ git add app/VERSION
 $ git commit -m "Bump version to 1.0.1"
 ```
 
----
-
-:cop: :raised_hand: - Please wait until everyone has caught up.
-
-:construction: :construction: :construction: :construction: :construction: :construction: :construction: :construction: :construction: :construction: :construction: :construction: :construction: :construction: :construction:
-
----
-
-### 2 - Publish the Hotfix Branch
-
-
-__Maintainers__
-
-Choose a maintainer to publish the hotfix branch. This maintainer should push the branch to source:
-
-```sh
-$ git push source hotfix-1.0.1
-```
-
-At this time create a pull request to merge the hotfix branch into `master`, but do not yet merge.
-
----
-
-:cop: :raised_hand: - Please wait until everyone has caught up.
-
-:construction: :construction: :construction: :construction: :construction: :construction: :construction: :construction: :construction: :construction: :construction: :construction: :construction: :construction: :construction:
-
----
-
-### 3 - Make Changes in Feature Branch
-
-__Developers__
-
-Fetch the latest from source and create a local tracking branch for the hotfix:
-
-```sh
-$ git fetch source
-# fetch latest from source
-
-$ git checkout hotfix-1.0.1
-# checkout the hotfix branch
-Branch hotfix-1.0.1 set up to track remote branch hotfix-1.0.1 from source.
-Switched to a new branch 'hotfix-1.0.1'
-```
-
-:bulb: As long as only one of your remotes has a branch called hotfix-1.0.1, it knows to create a local tracking branch.
-
-
-Create a feature branch named `remove-emails` off of the hotfix branch.
-```sh
-$ git checkout -b remove-emails
-```
-
 After removing the email addresses from the main page ([/app/index.md](/app/index.md)), stage and commit the change:
 ```sh
 $ git add app/index.md
@@ -98,76 +47,26 @@ $ git add app/index.md
 $ git commit -m "Remove email addresses from app"
 ```
 
----
 
-:cop: :raised_hand: - Please wait until everyone has caught up.
+### 2 - Publish the Hotfix Branch and create Pull Request
 
-:construction: :construction: :construction: :construction: :construction: :construction: :construction: :construction: :construction: :construction: :construction: :construction: :construction: :construction: :construction:
+Push the branch to origin (Github):
 
----
-
-### 4 - Publish and Request to Merge Feature Branch
-
-__Developers__
-
-Choose a developer to publish the fixup branch and create a Pull Request against the hotfix branch.
-
-Publish the branch:
 ```sh
-$ git push origin remove-emails
+$ git push origin hotfix-1.0.1
 ```
 
-Navigate to your GitHub fork and open the pull request, making sure to request to merge changes into the `hotfix-1.0.1` branch.
+Navigate to your GitHub fork and open the pull request. On the Pull Request interface, make sure that the base fork is `your-username\git-flow-exercise` and the base branch is `master`. This means that you are requesting to merge your changes into the `master` branch of your forked copy of the repository. 
 
----
+We also want to merge the hotfix changes into `develop`, so create a second Pull Request making sure that the base fork is `your-username\git-flow-exercise` and the base branch is `develop`. 
 
-:cop: :raised_hand: - Please wait until everyone has caught up.
 
-:construction: :construction: :construction: :construction: :construction: :construction: :construction: :construction: :construction: :construction: :construction: :construction: :construction: :construction: :construction:
+### 5 - Accept Pull Requests
 
----
+Open each Pull Request in the Github interface and click the green "Merge pull request" button. Once the hotfix is merged into `master` we can assume that the app is updated and the issue of writers receiving too much email is resolved.
 
-### 4 - Finish Hotfix Branch
+Fetch the latest changes in master and develop branches to your local device, like you did in [4. Fetching Latest](4-fetching-latest.md).
 
-__Maintainers__
-
-Choose a maintainer to accept the new pull request to merge the hotfix branch into master,.
-
----
-
-:cop: :raised_hand: - Please wait until everyone has caught up.
-
-:construction: :construction: :construction: :construction: :construction: :construction: :construction: :construction: :construction: :construction: :construction: :construction: :construction: :construction: :construction:
-
----
-
-### 5 - Merge Back into `develop`
-
-Next we will work to get the hotfix merged back down into `develop`, so switch to the hotfix branch and pull down all the latest changes:
-```sh
-$ git checkout hotfix-1.0.1
-# switch to hotfix branch
-
-$ git pull
-# pull latest changes
-```
-
-:bulb: Running git pull on a tracking branch will automatically fetch and merge changes.
-
-Merge hotfix into develop, creating a new merge commit (via `--no-ff`):
-```sh
-$ git checkout develop
-# switch to develop
-
-$ git merge hotfix-1.0.1 --no-ff -m "Merging 1.0.1"
-```
-
-:bulb: Always make sure that `develop` is up to date before merging. There may be some merge conflicts that will need to be addressed at this point.
-
-Choose a maintainer to push the the commit up to the source repository:
-```sh
-$ git push source develop
-```
 
 ## Next
 

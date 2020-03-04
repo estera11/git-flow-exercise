@@ -4,29 +4,27 @@
 | --- | --- |
 |  February 15<sup>th</sup> | Release |
 
-It is now time to begin testing `v1.1` of the app and submit it for the magazine's review
+It is now time to begin testing `v1.1.0` of the app and submit it for the magazine's review
 
 ## :running: Activities
 
 ### 1 - Create a Release Branch
 
-__Maintainers__
+__One Team Member__
 
 Bring your local develop branch up to date with the source repository:
 ```sh
-$ git fetch source
-
 $ git checkout develop
 
-$ git merge source/develop
+$ git pull
 ```
 
-Create a new branch off of `develop` named `release-1.1`:
+Create a new branch off of `develop` named `release-1.1.0`:
 ```sh
-$ git checkout -b release-1.1
+$ git checkout -b release-1.1.0
 ```
 
-Bump the version number to 1.1:
+Bump the version number to 1.1.0:
 ```
 major=1
 minor=1
@@ -37,25 +35,17 @@ Finally, stage and commit the change:
 ```sh
 $ git add app/VERSION
 
-$ git commit -m "Bump version to 1.1"
+$ git commit -m "Bump version to 1.1.0"
 ```
 
 ### 2 - Publish the Release Branch
 
-__Maintainers__
+__One Team Member__
 
-Choose a maintainer to publish the release branch to the source repository:
+Publish the release branch to the source repository:
 ```sh
-$ git push source release-1.1
+$ git push origin release-1.1.0
 ```
-
-### 3 - Open Pull Request
-
-__Maintainers__
-
-Choose a maintainer to open a pull request to merge the release branch into the `master` branch. __Do not merge the pull request at this time__. 
-
-This pull request is a good place to document all of the changes that comprise the release, perform a final review of the code that will be pushed, and comment on any issues related to the release. 
 
 ## Next
 

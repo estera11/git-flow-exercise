@@ -2,7 +2,7 @@
 
 An exercise for learning the [git-flow branching model](http://nvie.com/posts/a-successful-git-branching-model/). This exercise will walk your team through a full release cycle for an example application.
 
-## Background
+## Scenario
 
 The print magazine _Flavor_ has asked your firm to build and maintain an app so they can share recipes with their hungry audience.
 
@@ -12,11 +12,11 @@ The typical development cycle for the project is as follows:
 - On the 15<sup>th</sup> of every month, the new version of the app is pushed to a staging server where the magazine's editors can do a final review.
 - On the last day of the month, the new version of the app is pushed to production.
 
-Development for this project began in January. It is now the beginning of February and the development cycle for `v1.1` of the app has begun.
+Development for `v1.0.0` of this project began in January. It is now the beginning of February and the development cycle for `v1.1.0` of the app has begun.
 
 ## Getting Started
 
-Your team will be split between Developers and one or more Maintainers. Maintainers will be responsible for cutting new releases and accepting Pull Requests from other team members. Maintainers should have write access to this repository and Developers should have read access.
+Your team is made up of two developers. Each of you will contribute new content to the project from your computers and also review the other developers contribution.
 
 ### Follow Along
 
@@ -29,7 +29,7 @@ Please leave this repository open in a browser tab so that you can follow along 
 
 ## Next
 
-Next we will walk through the process of creating a Fork repository and setting up a local clone.
+Next we will walk through the process of creating a GitHub Fork and local clone of this repository.
 
 [Go](/walkthrough/1-setup.md)
 
